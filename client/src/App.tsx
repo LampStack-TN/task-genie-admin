@@ -30,11 +30,12 @@ function App() {
     <>
       <Routes>
         <Route
+       
         path='/dashboard'
           index
           element={
             <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title=" Dashboard | TaskGenie" />
               <ECommerce />
             </>
           }
@@ -43,7 +44,7 @@ function App() {
           path="/calendar"
           element={
             <>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Calendar | TaskGenie" />
               <Calendar />
             </>
           }
@@ -52,7 +53,7 @@ function App() {
             path="/tables"
             element={
               <>
-                <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <PageTitle title="Tables | TaskGenie" />
                 <Tables />
               </>
             }
@@ -61,7 +62,7 @@ function App() {
           path="/profile"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Profile | TaskGenie" />
               <Profile />
             </>
           }
@@ -70,7 +71,7 @@ function App() {
           path="/settings"
           element={
             <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Settings | TaskGenie" />
               <Settings />
             </>
           }
@@ -79,7 +80,7 @@ function App() {
           path="/table"
           element={
             <>
-              <PageTitle title="Table| TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Table| TaskGenie" />
               <Table/>
             </>
           }
@@ -87,7 +88,7 @@ function App() {
           path="/"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Signin | TaskGenie" />
               <SignIn />
             </>
           }
@@ -96,7 +97,7 @@ function App() {
           path="/TasksTable"
           element={
             <>
-              <PageTitle title="TasksTable| TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="TasksTable| TaskGenie" />
               <TasksTable/>
             </>
           }
