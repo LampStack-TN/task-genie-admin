@@ -30,6 +30,7 @@ function App() {
     <>
       <Routes>
         <Route
+        path='/dashboard'
           index
           element={
             <>
@@ -83,7 +84,7 @@ function App() {
             </>
           }
         />        <Route
-          path="/auth/signin"
+          path="/"
           element={
             <>
               <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
