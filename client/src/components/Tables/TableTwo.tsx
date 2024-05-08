@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Clients } from '../../types/Clients';
-
+import { ApiClient } from '../../utils/api';
 const TableTwo = () => {
   const [clients, setClients] = useState<Clients[]>([]);
 
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await fetch(
-          'http://localhost:3000/api/admin/clients',
-        );
-        const data = await response.json();
+        const {data} = await ApiClient().get('/admin/clients') 
         setClients(data);
+
       } catch (error) {
         console.error('Failed to fetch Clients:', error);
       }
