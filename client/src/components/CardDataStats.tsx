@@ -1,11 +1,4 @@
-import React, { ReactNode } from 'react';
-
-interface CardDataStatsProps {
-  title: string;
-  total: string;
-  children: ReactNode;
-}
-
+import CardDataStatsProps from "../types/CardDataStatsProps";
 const CardDataStats: React.FC<CardDataStatsProps> = ({
   title,
   total,
