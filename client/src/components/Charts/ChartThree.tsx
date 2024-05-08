@@ -1,10 +1,10 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { useClientData } from '../../services/fetchClient';
+import { useProfessionalData } from '../../services/fetchprofessional';
+import ChartThreeState from '../../types/ChartThreeState';
 
-interface ChartThreeState {
-  series: number[];
-}
 
 const options: ApexOptions = {
   chart: {
@@ -49,18 +49,29 @@ const options: ApexOptions = {
   ],
 };
 
+
+
 const ChartThree: React.FC = () => {
+
   const [state, setState] = useState<ChartThreeState>({
-    series: [50, 50],
+    series: [0, 0],
   });
 
-  const handleReset = () => {
-    setState((prevState) => ({
-      ...prevState,
-      series: [50,50],
-    }));
-  };
-  handleReset;
+  const clientData = useClientData()
+  const professionalData = useProfessionalData()
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const clientPercentage = Math.round((clientData.length / (clientData.length + professionalData.length)) * 100);
+      setState((prevState) => ({
+        ...prevState,
+        series: [clientPercentage, 100 - clientPercentage],
+      }));
+    };
+    fetchData();
+  }, [clientData, professionalData]);
+
 
   return (
     <div className="sm:px-7.5 col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-5">
@@ -89,7 +100,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Client </span>
-              {/* <span> {Client percentage here}%</span> */} %
+              <span> {state.series[0]}%</span> %
             </p>
           </div>
         </div>
@@ -98,7 +109,7 @@ const ChartThree: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> professional</span>
-              {/* <span> {professional percentage here }% </span> */}%
+              <span> {state.series[1] }% </span>
             </p>
           </div>
         </div>
