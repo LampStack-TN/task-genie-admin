@@ -5,7 +5,7 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import Calendar from './pages/Calendar';
-import ECommerce from './pages/Dashboard/Main';
+import Main from './pages/Dashboard/Main';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
@@ -36,7 +36,7 @@ function App() {
           element={
             <>
               <PageTitle title=" Dashboard | TaskGenie" />
-              <ECommerce />
+              <Main />
             </>
           }
         />
