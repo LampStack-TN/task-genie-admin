@@ -2,24 +2,27 @@ import React from 'react';
 import CardDataStats from '../../components/CardDataStats';
 import ChartThree from '../../components/Charts/ChartThree';
 import ChartTwo from '../../components/Charts/ChartTwo';
-
-
-
 import DefaultLayout from '../../layout/DefaultLayout';
 
-const ECommerce: React.FC = () => {
+const Main: React.FC = () => {
 
   const gridContainerStyle = {
-    marginTop: '50px', 
+    marginTop: '20px', 
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-    gap: '50px',
+    gap: '20px',
   };
 
   const chartContainerStyle = {
-    marginTop: '90px', 
-    gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', 
-    gap: '10px', 
+    marginTop: '20px', 
+    gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', 
+    gap: '20px', 
   };
+
+
+
+  // const  fetcher = ()=>{
+
+  // }
 
   return (
     <DefaultLayout>
@@ -111,4 +114,4 @@ const ECommerce: React.FC = () => {
   );
 };
 
-export default ECommerce;
+export default Main;
