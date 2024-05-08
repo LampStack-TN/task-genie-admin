@@ -3,7 +3,7 @@ import dataJSON from '../../public/data.json';
 
 
 
-export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
+export const Modal = ({ closeModal, onSubmit, defaultValue }:any) => {
   const fields=Object.keys(Object.values(dataJSON)[0]).filter((item:any)=>!(item.startsWith("delta_")));
   
   const [formState, setFormState] = useState(
