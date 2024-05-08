@@ -3,27 +3,28 @@ import CardDataStats from '../../components/CardDataStats';
 import ChartThree from '../../components/Charts/ChartThree';
 import ChartTwo from '../../components/Charts/ChartTwo';
 import DefaultLayout from '../../layout/DefaultLayout';
+import { useClientData } from '../../services/fetchClient';
+import { useProfessionalData } from '../../services/fetchprofessional';
+import { useTasksData } from '../../services/fetchTasks';
 
 const Main: React.FC = () => {
+  const clientData = useClientData()
+  const professionalData = useProfessionalData()
+  const tasksData = useTasksData()
+  
 
   const gridContainerStyle = {
     marginTop: '20px', 
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
     gap: '20px',
   };
-
   const chartContainerStyle = {
     marginTop: '20px', 
     gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))', 
     gap: '20px', 
   };
-
-
-
-  // const  fetcher = ()=>{
-
-  // }
-
+  
+  
   return (
     <DefaultLayout>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5"
@@ -32,7 +33,7 @@ const Main: React.FC = () => {
         
        
         
-        <CardDataStats title="Total Clients" total="10" >
+        <CardDataStats title="Total Clients" total={clientData.length}>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -55,7 +56,7 @@ const Main: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total professional" total="10"  >
+        <CardDataStats title="Total professional" total={professionalData.length} >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -78,7 +79,7 @@ const Main: React.FC = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total professions" total="20" >
+        <CardDataStats title="Total professions" total={tasksData.length} >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
