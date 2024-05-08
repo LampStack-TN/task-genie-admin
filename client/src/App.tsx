@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
 import  Table  from './pages/Table';
+import TasksTable from './pages/TasksTable';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -90,6 +91,15 @@ function App() {
             </>
           }
         />
+        <Route
+          path="/TasksTable"
+          element={
+            <>
+              <PageTitle title="TasksTable| TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <TasksTable/>
+            </>
+          }
+        /> 
       </Routes>
     </>
   );
