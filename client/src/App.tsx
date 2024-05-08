@@ -8,7 +8,7 @@ import Calendar from './pages/Calendar';
 import ECommerce from './pages/Dashboard/ECommerce';
 import Profile from './pages/Profile';
 import Tables from './pages/Tables';
-
+import  Table  from './pages/Table';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -62,7 +62,15 @@ function App() {
             </>
           }
         />
-       
+        <Route
+          path="/table"
+          element={
+            <>
+              <PageTitle title="Table| TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <Table/>
+            </>
+          }
+        />
        
         <Route
           path="/auth/signin"
