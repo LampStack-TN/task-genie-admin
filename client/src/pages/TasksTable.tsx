@@ -1,17 +1,18 @@
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
-import TableOne from '../components/Tables/TableOne';
+
+import TableThree from '../components/Tables/TableThree';
 import DefaultLayout from '../layout/DefaultLayout';
 
-const Tables = () => {
+const TasksTable = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Professionals Table" />
+      <Breadcrumb pageName="Tasks Table" />
 
       <div className="flex flex-col gap-10">
-        <TableOne />
+        <TableThree />
       </div>
     </DefaultLayout>
   );
 };
 
-export default Tables;
+export default TasksTable;
