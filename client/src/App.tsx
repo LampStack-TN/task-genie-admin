@@ -7,8 +7,10 @@ import SignIn from './pages/Authentication/SignIn';
 import Calendar from './pages/Calendar';
 import ECommerce from './pages/Dashboard/ECommerce';
 import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import Tables from './pages/Tables';
 import  Table  from './pages/Table';
+
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -44,6 +46,15 @@ function App() {
             </>
           }
         />
+          <Route
+            path="/tables"
+            element={
+              <>
+                <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Tables />
+              </>
+            }
+          />
         <Route
           path="/profile"
           element={
@@ -54,15 +65,15 @@ function App() {
           }
         />
         <Route
-          path="/tables"
+          path="/settings"
           element={
             <>
-              <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Tables />
+              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <Settings />
             </>
           }
         />
-        <Route
+<Route
           path="/table"
           element={
             <>
@@ -70,9 +81,7 @@ function App() {
               <Table/>
             </>
           }
-        />
-       
-        <Route
+        />        <Route
           path="/auth/signin"
           element={
             <>
@@ -81,7 +90,6 @@ function App() {
             </>
           }
         />
-       
       </Routes>
     </>
   );
