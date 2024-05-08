@@ -1,5 +1,5 @@
 // Import necessary packages
-import config from "../../../config.js"
+import config from "../config/config.js"
 import axios from "axios"
 
 // Define your API URL
