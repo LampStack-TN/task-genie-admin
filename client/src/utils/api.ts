@@ -1,5 +1,5 @@
 // Import necessary packages
-import config from "../config.js"
+import config from "../config.example";
 import axios from "axios"
 
 // Define your API URL
@@ -30,8 +30,8 @@ export const ApiClient = () => {
     return api.get(id).then((response) => response);
   };
 
-  const post = (body:any) => {
-    return api.post(body).then((response) => response);
+  const post = (path:any, body:any) => {
+    return api.post(path, body).then((response) => response);
   };
 
   const put = (id:string, body:any) => {
