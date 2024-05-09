@@ -1,13 +1,12 @@
 import  { useEffect, useState } from 'react';
 import { Task } from '../../types/Task';
-
+import { ApiClient } from '../../utils/api';
 const TableThree = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch('http://localhost:3000/api/admin/AllTasks');
-      const data = await response.json();
+      const {data} = await ApiClient().get('/admin/AllTasks')     
       setTasks(data);
       console.log(data);
       
