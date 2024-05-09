@@ -1,31 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Clients } from '../../types/Clients';
-import { ApiClient } from '../../utils/api';
+import { useClientData } from '../../services/fetchClient';
+
 const TableTwo = () => {
-  const [clients, setClients] = useState<Clients[]>([]);
-
-  useEffect(() => {
-    const fetchClients = async () => {
-      try {
-        const {data} = await ApiClient().get('/admin/clients') 
-        setClients(data);
-
-      } catch (error) {
-        console.error('Failed to fetch Clients:', error);
-      }
-    };
-
-    fetchClients();
-  }, []);
+  const clients = useClientData();
 
   return (
-    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark" style={{ maxHeight: '500px', overflowY: 'auto' }}>
+    <div
+      className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+      style={{ maxHeight: '500px', overflowY: 'auto' }}
+    >
       <div className="py-6 px-4 md:px-6 xl:px-7.5">
         <h4 className="text-xl font-semibold text-black dark:text-white">
           Clients
         </h4>
       </div>
-  
+
       <div className="grid grid-cols-6 border-t border-stroke py-4.5 px-4 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5">
         <div className="col-span-3 flex items-center">
           <p className="font-medium">fullName</p>
@@ -43,7 +31,7 @@ const TableTwo = () => {
           <p className="font-medium">zipcode</p>
         </div>
       </div>
-  
+
       {clients.map((client, key) => (
         <div
           className="grid grid-cols-6 border-t border-stroke py-4.5 px-4 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5"
@@ -60,17 +48,15 @@ const TableTwo = () => {
             </div>
           </div>
           <div className="col-span-2 hidden items-center sm:flex">
-            <p className="text-sm text-black dark:text-white">
-              {client.email}
-            </p>
+            <p className="text-sm text-black dark:text-white">{client.email}</p>
+          </div>
+          <div className="col-span-1 flex items-center">
+            <p className="text-sm text-black dark:text-white">{client.role}</p>
           </div>
           <div className="col-span-1 flex items-center">
             <p className="text-sm text-black dark:text-white">
-              {client.role}
+              {client.address}
             </p>
-          </div>
-          <div className="col-span-1 flex items-center">
-            <p className="text-sm text-black dark:text-white">{client.address}</p>
           </div>
           <div className="col-span-1 flex items-center">
             <p className="text-sm text-meta-3">${client.zipcode}</p>
@@ -79,7 +65,6 @@ const TableTwo = () => {
       ))}
     </div>
   );
-  
 };
 
 export default TableTwo;
