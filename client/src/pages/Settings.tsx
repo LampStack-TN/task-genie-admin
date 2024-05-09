@@ -1,8 +1,12 @@
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 
 import DefaultLayout from '../layout/DefaultLayout';
-
+import { useAdminData } from '../services/fetchAdmin';
 const Settings = () => {
+
+const adminData = useAdminData()
+const {avatar,email} = adminData
+
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-270">
@@ -58,7 +62,7 @@ const Settings = () => {
                         type="email"
                         name="emailAddress"
                         id="emailAddress"
-                        
+                        defaultValue={email}
                       />
                     </div>
                   </div>
@@ -125,7 +129,7 @@ const Settings = () => {
                 <form action="#">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="h-14 w-14 rounded-full">
-                      <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="User" />
+                      <img src={avatar} alt="User" />
                     </div>
                     <div>
                       <span className="mb-1.5 text-black dark:text-white">
