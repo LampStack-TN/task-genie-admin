@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-
+import { useAdminData } from '../../services/fetchAdmin';
 const DropdownUser = () => {
+
+  const adminData = useAdminData()
+  const {avatar,fullName,role} = adminData
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
@@ -48,14 +51,14 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {fullName}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs">{role}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
           <img
-            src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+            src={avatar}
             alt="User"
           />
         </span>
