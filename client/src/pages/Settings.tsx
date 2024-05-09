@@ -1,12 +1,27 @@
+import { useState } from 'react';
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 
 import DefaultLayout from '../layout/DefaultLayout';
 import { useAdminData } from '../services/fetchAdmin';
+import { ApiClient } from '../utils/api';
 const Settings = () => {
 
 const adminData = useAdminData()
-const {avatar,email} = adminData
+const ava = adminData.avatar
+const ema = adminData.email
+const [email, setEmail] = useState<string>('');
+const [password, setPassword] = useState<string>('');
 
+
+const handleEmailAndPassword = async ()=>{
+  try{
+await ApiClient().put(`/admin/update/${10019}`,{
+  email,
+  password
+})
+alert("updated successfully")
+  }catch(err){console.error("handleEmailAndPassword failds :" ,err)}
+}
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-270">
@@ -21,7 +36,7 @@ const {avatar,email} = adminData
                 </h3>
               </div>
               <div className="p-7">
-                <form action="#">
+                <form onSubmit={handleEmailAndPassword}>
                   
 
                   <div className="mb-5.5">
@@ -62,7 +77,8 @@ const {avatar,email} = adminData
                         type="email"
                         name="emailAddress"
                         id="emailAddress"
-                        defaultValue={email}
+                        defaultValue={ema}
+                        onChange={(e)=>{setEmail(e.target.value)}}
                       />
                     </div>
                   </div>
@@ -94,7 +110,7 @@ const {avatar,email} = adminData
                       type="text"
                       name="new password"
                       id="new password"
-                      
+                      onChange={(e)=>{setPassword(e.target.value)}}
                     />
                   </div>
 
@@ -129,7 +145,7 @@ const {avatar,email} = adminData
                 <form action="#">
                   <div className="mb-4 flex items-center gap-3">
                     <div className="h-14 w-14 rounded-full">
-                      <img src={avatar} alt="User" />
+                      <img src={ava} alt="User" />
                     </div>
                     <div>
                       <span className="mb-1.5 text-black dark:text-white">
