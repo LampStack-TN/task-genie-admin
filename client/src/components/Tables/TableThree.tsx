@@ -1,8 +1,12 @@
 import { useTasksData } from '../../services/fetchTasks';
-
+import { useNavigate } from 'react-router-dom'; 
 const TableThree = () => {
   const tasks = useTasksData();
+  const navigate = useNavigate(); 
 
+  const handleRowClick = (taskId:number) => {
+    navigate(`/tasks/${taskId}`); 
+  };
   return (
     <div
       className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
@@ -35,7 +39,7 @@ const TableThree = () => {
         </thead>
         <tbody>
           {tasks.map((task, index) => (
-            <tr key={index}>
+            <tr key={index}  onClick={() => handleRowClick(task.id)} className="cursor-pointer">
               <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                 {task.title}
               </td>
