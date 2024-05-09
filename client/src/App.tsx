@@ -7,9 +7,10 @@ import Main from './pages/Dashboard/Main';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
-import  Table  from './pages/Table';
+import Table from './pages/Table';
 import TasksTable from './pages/TasksTable';
 import TableFour from './pages/Tablefour';
+import TaskDetails from './components/Tables/TaskDetails';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -28,8 +29,7 @@ function App() {
     <>
       <Routes>
         <Route
-       
-        path='/dashboard'
+          path="/dashboard"
           index
           element={
             <>
@@ -38,15 +38,15 @@ function App() {
             </>
           }
         />
-          <Route
-            path="/tables"
-            element={
-              <>
-                <PageTitle title="Tables | TaskGenie" />
-                <Tables />
-              </>
-            }
-          />
+        <Route
+          path="/tables"
+          element={
+            <>
+              <PageTitle title="Tables | TaskGenie" />
+              <Tables />
+            </>
+          }
+        />
         <Route
           path="/profile"
           element={
@@ -65,15 +65,16 @@ function App() {
             </>
           }
         />
-<Route
+        <Route
           path="/table"
           element={
             <>
               <PageTitle title="Table| TaskGenie" />
-              <Table/>
+              <Table />
             </>
           }
-        />        <Route
+        />{' '}
+        <Route
           path="/"
           element={
             <>
@@ -87,19 +88,28 @@ function App() {
           element={
             <>
               <PageTitle title="TasksTable| TaskGenie" />
-              <TasksTable/>
+              <TasksTable />
             </>
           }
-        /> 
-         <Route
+        />
+        <Route
           path="/Services"
           element={
             <>
               <PageTitle title="Services| TaskGenie" />
-              <TableFour/>
+              <TableFour />
             </>
           }
-        /> 
+        />
+        <Route
+          path="/tasks/:id"
+          element={
+            <>
+              <PageTitle title="Tasks| TaskGenie" />
+              <TaskDetails />
+            </>
+          }
+        />
       </Routes>
     </>
   );
