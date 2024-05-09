@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 
 import DefaultLayout from '../../layout/DefaultLayout';
 import { ApiClient } from '../../utils/api';
@@ -48,8 +47,6 @@ const SignIn: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Sign In" />
-
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
