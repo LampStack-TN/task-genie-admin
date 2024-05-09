@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
-
+  const navigate = useNavigate(); 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: MouseEvent) => {
@@ -34,6 +33,10 @@ const DropdownUser = () => {
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
+  const handleLogout = () => {
+    localStorage.clear(); 
+    navigate('/'); 
+  };
 
   return (
     <div className="relative">
@@ -51,7 +54,10 @@ const DropdownUser = () => {
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="User" />
+          <img
+            src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg"
+            alt="User"
+          />
         </span>
 
         <svg
@@ -106,7 +112,7 @@ const DropdownUser = () => {
               My Profile
             </Link>
           </li>
-          
+
           <li>
             <Link
               to="/settings"
@@ -133,7 +139,10 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button
+          className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+          onClick={handleLogout}
+        >
           <svg
             className="fill-current"
             width="22"
