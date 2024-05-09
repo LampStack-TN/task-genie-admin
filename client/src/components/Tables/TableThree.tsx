@@ -1,22 +1,13 @@
-import  { useEffect, useState } from 'react';
-import { Task } from '../../types/Task';
-import { ApiClient } from '../../utils/api';
+import { useTasksData } from '../../services/fetchTasks';
+
 const TableThree = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      const {data} = await ApiClient().get('/admin/AllTasks')     
-      setTasks(data);
-      console.log(data);
-      
-    };
-
-    fetchTasks();
-  }, []);
+  const tasks = useTasksData();
 
   return (
-    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark" style={{ maxHeight: '400px', overflowY: 'auto' }}>
+    <div
+      className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+      style={{ maxHeight: '400px', overflowY: 'auto' }}
+    >
       <div className="py-6 px-4 md:px-6 xl:px-7.5">
         <h4 className="text-xl font-semibold text-black dark:text-white">
           Tasks
@@ -55,7 +46,7 @@ const TableThree = () => {
                 {task.urgency}
               </td>
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-              {task.applicantCount}
+                {task.applicantCount}
               </td>
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                 {task.favouriteCount}
