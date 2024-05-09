@@ -11,6 +11,7 @@ import Table from './pages/Table';
 import TasksTable from './pages/TasksTable';
 import TableFour from './pages/Tablefour';
 import TaskDetails from './components/Tables/TaskDetails';
+import ServiceDetails from './components/Tables/ServiceDetails';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -107,6 +108,15 @@ function App() {
             <>
               <PageTitle title="Tasks| TaskGenie" />
               <TaskDetails />
+            </>
+          }
+        />
+        <Route
+          path="/service/:id"
+          element={
+            <>
+              <PageTitle title="Services| TaskGenie" />
+              <ServiceDetails />
             </>
           }
         />
