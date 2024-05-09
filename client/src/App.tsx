@@ -9,7 +9,7 @@ import Settings from './pages/Settings';
 import Tables from './pages/Tables';
 import  Table  from './pages/Table';
 import TasksTable from './pages/TasksTable';
-
+import TableFour from './pages/Tablefour';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -88,6 +88,15 @@ function App() {
             <>
               <PageTitle title="TasksTable| TaskGenie" />
               <TasksTable/>
+            </>
+          }
+        /> 
+         <Route
+          path="/Services"
+          element={
+            <>
+              <PageTitle title="Services| TaskGenie" />
+              <TableFour/>
             </>
           }
         /> 
