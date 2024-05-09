@@ -1,7 +1,13 @@
 import { useServicesData } from '../../services/fetchServices';
+import { useNavigate } from 'react-router-dom'; 
+
 const ServiceTable = () => {
   const Services = useServicesData();
+  const navigate = useNavigate(); 
 
+  const handleRowClick = (serviceId:number) => {
+    navigate(`/service/${serviceId}`); 
+  };
   return (
     <div
       className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
@@ -28,13 +34,13 @@ const ServiceTable = () => {
               price
             </th>
             <th className="py-4 px-4 font-medium text-black dark:text-white">
-              Hirings
+              hirings
             </th>
           </tr>
         </thead>
         <tbody>
           {Services.map((service, index) => (
-            <tr key={index}>
+            <tr key={index} onClick={() => handleRowClick(service.id)} className="cursor-pointer">
               <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                 {service.title}
               </td>
@@ -48,7 +54,7 @@ const ServiceTable = () => {
                 {service.price}
               </td>
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                {service.skills.map((skill) => skill.name).join(', ')}
+                {service.hiringCount}
               </td>
             </tr>
           ))}
