@@ -1,7 +1,7 @@
 import  { ReactNode } from 'react';
 interface CardDataStatsProps {
     title: string;
-    total: string;
+    total: number;
     children: ReactNode;
   }
   export default CardDataStatsProps
