@@ -3,7 +3,7 @@ import { ApiClient } from '../utils/api';
 
 export const useUploadHandling = () => {
     const [imagePreview, setImagePreview] = useState<File | null>(null);
-    console.log("imagePreview :" ,  imagePreview)
+    
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
