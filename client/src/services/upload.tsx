@@ -6,24 +6,32 @@ export const useUploadHandling = () => {
     console.log("imagePreview :" ,  imagePreview)
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
-            const file = e.target.files[0];
-            setImagePreview(file);
+
+        const file = e.target.files&& e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+            setImagePreview(reader.result as any);
+        };
+        if (file) {
+            reader.readAsDataURL(file);
         }
+        
     };
 
     const handleAvatar = async () => {
+            
         try {
             if (!imagePreview) {
                 console.error("No image selected.");
                 return;
             }
-
+            let token = localStorage.getItem('token');
             const formData = new FormData();
-            console.log("formData :" , formData)
-            formData.append("image", imagePreview);
+            formData.append('avatar',imagePreview);
 
-            await ApiClient().put(`/admin/updateAvatar/${10019}`, formData);
+            
+            await ApiClient().put(`/admin/updateAvatar/${10019}`, formData, { headers: { "token": token, "Content-Type": "multipart/form-data" } });
+           
             console.log("Avatar updated successfully");
         } catch (err) {
             console.error("Error updating avatar:", err);
@@ -31,7 +39,6 @@ export const useUploadHandling = () => {
     };
 
     return {
-        imagePreview,
         handleImageChange,
         handleAvatar,
     };
