@@ -34,7 +34,7 @@ export const ApiClient = () => {
     return api.post(path, body).then((response) => response);
   };
 
-  const put = (id:string, body:any) => {
+  const put = (id:string, body:any,headers:any) => {
     return api.put(id, body).then((response) => response);
   };
   const del = (id:string) => {
