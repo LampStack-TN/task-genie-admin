@@ -2,10 +2,17 @@ import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 
 import DefaultLayout from '../layout/DefaultLayout';
 import { useAdminData } from '../services/fetchAdmin';
-const Settings = () => {
+import { useFormHandling } from '../services/updateEAndP';
+import { useUploadHandling } from '../services/upload';
 
-const adminData = useAdminData()
-const {avatar,email} = adminData
+const Settings = () => {
+  const adminData = useAdminData();
+  const ava = adminData.avatar;
+  const ema = adminData.email;
+
+  const {handleEmailChange,handlePassChange,handleCurrentPassChange,handleEmailAndPassword,} = useFormHandling();
+  
+  const { handleAvatar, imagePreview, handleImageChange } = useUploadHandling();
 
   return (
     <DefaultLayout>
@@ -21,9 +28,7 @@ const {avatar,email} = adminData
                 </h3>
               </div>
               <div className="p-7">
-                <form action="#">
-                  
-
+                <form onSubmit={handleEmailAndPassword}>
                   <div className="mb-5.5">
                     <label
                       className="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -31,6 +36,7 @@ const {avatar,email} = adminData
                     >
                       Email Address
                     </label>
+
                     <div className="relative">
                       <span className="absolute left-4.5 top-4">
                         <svg
@@ -62,11 +68,11 @@ const {avatar,email} = adminData
                         type="email"
                         name="emailAddress"
                         id="emailAddress"
-                        defaultValue={email}
+                        defaultValue={ema}
+                        onChange={handleEmailChange}
                       />
                     </div>
                   </div>
-
                   <div className="mb-5.5">
                     <label
                       className="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -79,7 +85,7 @@ const {avatar,email} = adminData
                       type="text"
                       name="current password"
                       id="current password"
-                     
+                      onChange={handleCurrentPassChange}
                     />
                   </div>
                   <div className="mb-5.5">
@@ -94,19 +100,10 @@ const {avatar,email} = adminData
                       type="text"
                       name="new password"
                       id="new password"
-                      
+                      onChange={handlePassChange}
                     />
                   </div>
-
-                 
-
                   <div className="flex justify-end gap-4.5">
-                    <button
-                      className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
-                      type="submit"
-                    >
-                      Cancel
-                    </button>
                     <button
                       className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                       type="submit"
@@ -126,16 +123,46 @@ const {avatar,email} = adminData
                 </h3>
               </div>
               <div className="p-7">
-                <form action="#">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <form onSubmit={handleAvatar}>
                   <div className="mb-4 flex items-center gap-3">
                     <div className="h-14 w-14 rounded-full">
-                      <img src={avatar} alt="User" />
+                      
+                      
+                      
+                      
+                      
+                      
+                      <img
+                        src={
+                          imagePreview ? URL.createObjectURL(imagePreview) : ava
+                        }
+                      />
+
+
+
+
+
+                      
                     </div>
                     <div>
                       <span className="mb-1.5 text-black dark:text-white">
                         Edit your photo
                       </span>
-                      
                     </div>
                   </div>
 
@@ -143,11 +170,31 @@ const {avatar,email} = adminData
                     id="FileUpload"
                     className="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5"
                   >
+
+
+
+
+
+
+
+
+
                     <input
                       type="file"
                       accept="image/*"
                       className="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none"
+                      onChange={handleImageChange}
                     />
+
+
+
+
+
+
+
+
+
+
                     <div className="flex flex-col items-center justify-center space-y-3">
                       <span className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
                         <svg
@@ -188,12 +235,6 @@ const {avatar,email} = adminData
 
                   <div className="flex justify-end gap-4.5">
                     <button
-                      className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark dark:text-white"
-                      type="submit"
-                    >
-                      Cancel
-                    </button>
-                    <button
                       className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
                       type="submit"
                     >
@@ -201,6 +242,23 @@ const {avatar,email} = adminData
                     </button>
                   </div>
                 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               </div>
             </div>
           </div>
