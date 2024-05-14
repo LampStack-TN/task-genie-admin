@@ -6,87 +6,43 @@ const TaskDetails: React.FC = () => {
   const { task } = useTaskById(id);
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6">
-      <div className="px-4 sm:px-0">
-        <h2 className="text-2xl font-bold leading-7 text-gray-900">
+    <div className="bg-white rounded-lg shadow-xl p-6 mx-auto max-w-4xl">
+      <div className="px-4 sm:px-6">
+        <h2 className="text-3xl font-semibold leading-9 text-gray-900">
           {task.title}
         </h2>
-        <p className="text-sm leading-6 text-gray-500">
+        <p className="mt-1 text-sm leading-6 text-gray-600">
           Details about the task and its requirements.
         </p>
       </div>
       <div className="mt-6 border-t border-gray-200">
         <dl className="divide-y divide-gray-200">
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Client</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.client?.fullName}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Description</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.description}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Location</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.location}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Min Price</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              ${task.minPrice}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Max Price</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              ${task.maxPrice}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Due Date</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.dueDate}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Urgency</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.urgency}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Created At</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.createdAt}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Updated At</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.updatedAt}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Applicants</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.applications?.length || 0}
-            </dd>
-          </div>
-          <div className="px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Applicants</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-              {task.applications?.map((app, index) => (
-                <div key={index}>
+          {[
+            { label: "Client", value: task.client?.fullName },
+            { label: "Description", value: task.description },
+            { label: "Location", value: task.location },
+            { label: "Min Price", value: `$${task.minPrice}` },
+            { label: "Max Price", value: `$${task.maxPrice}` },
+            { label: "Due Date", value: task.dueDate },
+            { label: "Urgency", value: task.urgency },
+            { label: "Created At", value: task.createdAt },
+            { label: "Updated At", value: task.updatedAt },
+            { label: "Applicants", value: task.applications?.length || 0 },
+            { label: "Applicants Details", value: task.applications?.map((app, index) => (
+                <div key={index} className="py-1">
                   {app.applicant.fullName} - {app.status}
                 </div>
-              )) || 'No Applicants'}
-            </dd>
-          </div>
+              )) || 'No Applicants' },
+          ].map((item, index) => (
+            <div key={index} className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-gray-500">
+                {item.label}
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
+                {item.value}
+              </dd>
+            </div>
+          ))}
         </dl>
       </div>
     </div>
