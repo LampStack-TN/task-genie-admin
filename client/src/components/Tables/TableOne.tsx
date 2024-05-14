@@ -1,8 +1,14 @@
 import { useProfessionalData } from '../../services/fetchprofessional';
+import { useNavigate } from 'react-router-dom'; 
 
 const TableOne = () => {
+  const professionals = useProfessionalData();
+  const navigate = useNavigate(); 
 
-const professionals = useProfessionalData();
+  const handleRowClick = (profileId:number) => {
+    navigate(`/professional/${profileId}`); 
+  };
+
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -12,37 +18,48 @@ const professionals = useProfessionalData();
   
       <div className="overflow-y-auto" style={{ maxHeight: '500px' }}>
         <div className="flex flex-col">
-          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-7">
+            {/* Headers */}
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                fullName
+                Full Name
               </h5>
             </div>
             <div className="p-2.5 text-center xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                email
+                Email
               </h5>
             </div>
             <div className="p-2.5 text-center xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                role
+                Role
               </h5>
             </div>
             <div className="hidden p-2.5 text-center sm:block xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                address
+                Address
               </h5>
             </div>
             <div className="hidden p-2.5 text-center sm:block xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                zipcode
+                Zipcode
+              </h5>
+            </div>
+            <div className="p-2.5 text-center xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Accept
+              </h5>
+            </div>
+            <div className="p-2.5 text-center xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Reject
               </h5>
             </div>
           </div>
   
           {professionals.map((professional, key) => (
             <div
-              className={`grid grid-cols-3 sm:grid-cols-5 ${
+              className={`grid grid-cols-3 sm:grid-cols-7 ${
                 key === professionals.length - 1
                   ? ''
                   : 'border-b border-stroke dark:border-strokedark'
@@ -54,7 +71,9 @@ const professionals = useProfessionalData();
                   <img
                     src={professional.avatar}
                     alt="Avatar"
+                    onClick={() => handleRowClick(professional.id)}
                     className="h-10 w-10 rounded-full"
+
                   />
                 </div>
                 <p className="text-black dark:text-white sm:block">
@@ -78,6 +97,24 @@ const professionals = useProfessionalData();
   
               <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
                 <p className="text-meta-5">{professional.zipcode}</p>
+              </div>
+  
+              {/* Accept Button */}
+              <div className="flex items-center justify-center p-2.5 xl:p-5">
+                <button
+                  className="bg-green-500 text-white px-4 py-2 rounded-full cursor-pointer hover:bg-green-600"
+                >
+                  Accept
+                </button>
+              </div>
+  
+              {/* Reject Button */}
+              <div className="flex items-center justify-center p-2.5 xl:p-5">
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded-full cursor-pointer hover:bg-red-600"
+                >
+                  Reject
+                </button>
               </div>
             </div>
           ))}
