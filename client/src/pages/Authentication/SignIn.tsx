@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../images/logo.png';
 
 import DefaultLayout from '../../layout/DefaultLayout';
 import { ApiClient } from '../../utils/api';
@@ -50,7 +51,9 @@ const SignIn: React.FC = () => {
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
-            <div className="py-17.5 px-26 text-center"></div>
+            <div className="py-17.5 px-26 text-center">
+            <img src={logo} alt="Logo" className="w-3/4 h-auto" />
+            </div>
           </div>
 
           <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
