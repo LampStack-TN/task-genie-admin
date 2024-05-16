@@ -12,7 +12,8 @@ import TasksTable from './pages/TasksTable';
 import TableFour from './pages/Tablefour';
 import TaskDetails from './components/Tables/TaskDetails';
 import ServiceDetails from './components/Tables/ServiceDetails';
-import ProfileDetails from './components/Tables/ProfileDetails'
+import ProfileDetails from './components/Tables/ProfileDetails';
+import VerifiedProfessionals from './components/Tables/VerifiedProfessionals';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -76,6 +77,15 @@ function App() {
             </>
           }
         />{' '}
+        <Route
+          path="/verifiedProfessionals"
+          element={
+            <>
+              <PageTitle title="verifiedProfessionals| TaskGenie" />
+              <VerifiedProfessionals />
+            </>
+          }
+        />
         <Route
           path="/"
           element={
