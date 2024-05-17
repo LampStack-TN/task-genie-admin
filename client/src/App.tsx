@@ -4,13 +4,12 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import Main from './pages/Dashboard/Main';
-import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Tables from './pages/Tables';
 import Table from './pages/Table';
 import TasksTable from './pages/TasksTable';
 import TableFour from './pages/Tablefour';
-import TableSix from './pages/TableSix'
+import TableSix from './pages/TableSix';
 import TableSeven from './pages/TableSeven';
 import VerifiedProfessionals from './components/Tables/VerifiedProfessionals';
 import TableFive from './pages/TableFive';
@@ -47,15 +46,6 @@ function App() {
             <>
               <PageTitle title="Tables | TaskGenie" />
               <Tables />
-            </>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <>
-              <PageTitle title="Profile | TaskGenie" />
-              <Profile />
             </>
           }
         />
