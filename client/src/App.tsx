@@ -10,10 +10,10 @@ import Tables from './pages/Tables';
 import Table from './pages/Table';
 import TasksTable from './pages/TasksTable';
 import TableFour from './pages/Tablefour';
-import TaskDetails from './components/Tables/TaskDetails';
+import TableSix from './pages/TableSix'
 import ServiceDetails from './components/Tables/ServiceDetails';
-import ProfileDetails from './components/Tables/ProfileDetails';
 import VerifiedProfessionals from './components/Tables/VerifiedProfessionals';
+import TableFive from './pages/TableFive';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const { pathname } = useLocation();
@@ -118,7 +118,7 @@ function App() {
           element={
             <>
               <PageTitle title="Tasks| TaskGenie" />
-              <TaskDetails />
+              <TableSix />
             </>
           }
         />
@@ -136,7 +136,7 @@ function App() {
           element={
             <>
               <PageTitle title="Professionals| TaskGenie" />
-              <ProfileDetails />
+              <TableFive />
             </>
           }
         />
