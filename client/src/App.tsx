@@ -11,7 +11,7 @@ import TasksTable from './pages/TasksTable';
 import TableFour from './pages/Tablefour';
 import TableSix from './pages/TableSix';
 import TableSeven from './pages/TableSeven';
-import VerifiedProfessionals from './components/Tables/VerifiedProfessionals';
+import VerifiedTable from './pages/VerifiedTable';
 import TableFive from './pages/TableFive';
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -72,7 +72,7 @@ function App() {
           element={
             <>
               <PageTitle title="verifiedProfessionals| TaskGenie" />
-              <VerifiedProfessionals />
+              <VerifiedTable />
             </>
           }
         />
