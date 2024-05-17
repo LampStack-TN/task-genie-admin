@@ -1,10 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTaskById } from '../../services/fetchTaskById';
 
 const TaskDetails: React.FC = () => {
   const { id } = useParams();
   const { task } = useTaskById(id);
+  const navigate = useNavigate();
 
+  const handleBackClick = () => {
+    navigate(-1);
+  };
   return (
     <div className="bg-white rounded-lg shadow-xl p-6 mx-auto max-w-4xl">
       <div className="px-4 sm:px-6">
@@ -44,6 +48,15 @@ const TaskDetails: React.FC = () => {
             </div>
           ))}
         </dl>
+      </div>
+      <div className="flex justify-end space-x-4 mt-4">
+        <button
+          onClick={handleBackClick}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        >
+          Back
+        </button>
+       
       </div>
     </div>
   );
