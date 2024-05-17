@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ApiClient } from '../../utils/api';
 import { Professional } from '../../types/Professional';
+import { acceptProfessional, rejectProfessional } from '../../services/fetchVerifyUser';
 
 const TableOne = () => {
   const [professionals, setProfessionals] = useState<Professional[]>([]);
@@ -25,21 +26,13 @@ const TableOne = () => {
   };
 
   const handleAccept = async (id: number) => {
-    try {
-      await ApiClient().put(`/admin/users/${id}/verify`);
-      fetchProfessionals();
-    } catch (error) {
-      console.error('Error accepting professional:', error);
-    }
+    await acceptProfessional(id);
+    fetchProfessionals();
   };
 
   const handleReject = async (id: number) => {
-    try {
-      await ApiClient().put(`/admin/users/${id}/reject`);
-      fetchProfessionals();
-    } catch (error) {
-      console.error('Error rejecting professional:', error);
-    }
+    await rejectProfessional(id);
+    fetchProfessionals();
   };
 
   return (
