@@ -59,7 +59,7 @@ const TableTwo = () => {
             </p>
           </div>
           <div className="col-span-1 flex items-center">
-            <p className="text-sm text-meta-3">${client.zipcode}</p>
+            <p className="text-sm text-meta-3">{client.zipcode}</p>
           </div>
         </div>
       ))}
