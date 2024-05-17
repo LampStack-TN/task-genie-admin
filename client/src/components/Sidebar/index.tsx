@@ -226,7 +226,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Professionals
+                  Pending Professionals
                 </NavLink>
               </li>
               {/* <!-- Menu Item Tables --> */}
