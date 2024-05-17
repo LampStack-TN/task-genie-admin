@@ -1,13 +1,14 @@
 import { useServicesData } from '../../services/fetchServices';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 const ServiceTable = () => {
-  const Services = useServicesData();
-  const navigate = useNavigate(); 
+  const services = useServicesData();
+  const navigate = useNavigate();
 
-  const handleRowClick = (serviceId:number) => {
-    navigate(`/service/${serviceId}`); 
+  const handleRowClick = (serviceId: number) => {
+    navigate(`/service/${serviceId}`);
   };
+
   return (
     <div
       className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
@@ -31,17 +32,20 @@ const ServiceTable = () => {
               Professional Name
             </th>
             <th className="py-4 px-4 font-medium text-black dark:text-white">
-              price
+              Price
             </th>
             <th className="py-4 px-4 font-medium text-black dark:text-white">
-              hirings
+              Hirings
             </th>
           </tr>
         </thead>
         <tbody>
-          {Services.map((service, index) => (
-            <tr key={index} onClick={() => handleRowClick(service.id)} className="cursor-pointer">
-              <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
+          {services.map((service, index) => (
+            <tr key={index} className="cursor-pointer">
+              <td
+                onClick={() => handleRowClick(service.id)}
+                className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11 hover:underline cursor-pointer"
+              >
                 {service.title}
               </td>
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
