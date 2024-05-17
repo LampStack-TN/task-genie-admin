@@ -1,7 +1,7 @@
 
 import {useVerifiedData}from '../../services/fetchVerified'
 const VerifiedProfessionals = () => {
-  const VerifiedProfessionals=useVerifiedData()
+  const Verified=useVerifiedData()
 
   return (
     <div
@@ -32,7 +32,7 @@ const VerifiedProfessionals = () => {
         </div>
       </div>
 
-      {VerifiedProfessionals.map((professional, key) => (
+      {Verified.map((professional, key) => (
         <div
           className="grid grid-cols-6 border-t border-stroke py-4.5 px-4 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5"
           key={key}
