@@ -43,7 +43,7 @@ const TableOne = () => {
 
       <div className="overflow-y-auto" style={{ maxHeight: '500px' }}>
         <div className="flex flex-col">
-          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-7">
+          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-6">
             {/* Headers */}
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
@@ -72,19 +72,14 @@ const TableOne = () => {
             </div>
             <div className="p-2.5 text-center xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Accept
-              </h5>
-            </div>
-            <div className="p-2.5 text-center xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Reject
+                Actions
               </h5>
             </div>
           </div>
 
           {professionals.map((professional) => (
             <div
-              className={`grid grid-cols-3 sm:grid-cols-7 ${
+              className={`grid grid-cols-3 sm:grid-cols-6 ${
                 professionals.length - 1 === professionals.indexOf(professional)
                   ? ''
                   : 'border-b border-stroke dark:border-strokedark'
@@ -92,15 +87,20 @@ const TableOne = () => {
               key={professional.id}
             >
               <div className="flex items-center gap-3 p-2.5 xl:p-5">
-                <div className="flex-shrink-0">
+                <div
+                  className="flex-shrink-0 cursor-pointer hover:underline"
+                  onClick={() => handleRowClick(professional.id)}
+                >
                   <img
                     src={professional.avatar}
                     alt="Avatar"
-                    onClick={() => handleRowClick(professional.id)}
                     className="h-10 w-10 rounded-full"
                   />
                 </div>
-                <p className="text-black dark:text-white sm:block">
+                <p
+                  className="text-black dark:text-white sm:block cursor-pointer hover:underline"
+                  onClick={() => handleRowClick(professional.id)}
+                >
                   {professional.fullName}
                 </p>
               </div>
@@ -125,18 +125,14 @@ const TableOne = () => {
                 <p className="text-meta-5">{professional.zipcode}</p>
               </div>
 
-              {/* Accept Button */}
-              <div className="flex items-center justify-center p-2.5 xl:p-5">
+              {/* Actions Column */}
+              <div className="flex items-center justify-center gap-2 p-2.5 xl:p-5">
                 <button
                   className="bg-green-500 text-white px-4 py-2 rounded-full cursor-pointer hover:bg-green-600"
                   onClick={() => handleAccept(professional.id)}
                 >
                   Accept
                 </button>
-              </div>
-
-              {/* Reject Button */}
-              <div className="flex items-center justify-center p-2.5 xl:p-5">
                 <button
                   className="bg-red-500 text-white px-4 py-2 rounded-full cursor-pointer hover:bg-red-600"
                   onClick={() => handleReject(professional.id)}
