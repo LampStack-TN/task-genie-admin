@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProfileById } from '../../services/fetchProfessionalById';
+import { acceptProfessional, rejectProfessional } from '../../services/fetchVerifyUser';
 
 const ProfileDetails = () => {
   const { id } = useParams();
@@ -7,6 +8,16 @@ const ProfileDetails = () => {
   const { professional } = useProfileById(id);
 
   const handleBackClick = () => {
+    navigate(-1);
+  };
+
+  const handleAccept = async () => {
+    await acceptProfessional(Number(id));
+    navigate(-1);
+  };
+
+  const handleReject = async () => {
+    await rejectProfessional(Number(id));
     navigate(-1);
   };
 
@@ -66,10 +77,16 @@ const ProfileDetails = () => {
         >
           Back
         </button>
-        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+        <button
+          onClick={handleAccept}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+        >
           Accept
         </button>
-        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+        <button
+          onClick={handleReject}
+          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+        >
           Reject
         </button>
       </div>
