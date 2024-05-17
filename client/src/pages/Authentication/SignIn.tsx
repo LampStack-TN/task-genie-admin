@@ -52,7 +52,7 @@ const SignIn: React.FC = () => {
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
-            <img src={logo} alt="Logo" className="w-3/4 h-auto" />
+            <img src={logo} alt="Logo" className="w-4/6 h-auto" />
             </div>
           </div>
 
