@@ -2,7 +2,7 @@ import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 import VerifiedProfessionals from '../components/Tables/VerifiedProfessionals';
 import DefaultLayout from '../layout/DefaultLayout';
 
-const TableFour = () => {
+const VerifiedTable = () => {
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Verified Professionals" />
@@ -14,4 +14,4 @@ const TableFour = () => {
   );
 };
 
-export default TableFour;
+export default VerifiedTable;
